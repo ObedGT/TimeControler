@@ -26,7 +26,7 @@ public class Menu extends AppCompatActivity {
         btnFormulario = (Button) findViewById(R.id.btnFormulario);
         btnFormulario2 = (Button) findViewById(R.id.btnFormulario2);
 
-        btnFotos.setOnClickListener(new View.OnClickListener() {
+        /*btnFotos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent navegacion1 = new Intent(Menu.this, Galeria.class);
@@ -49,12 +49,15 @@ public class Menu extends AppCompatActivity {
             }
         });
         btnFormulario.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent navegacion4 = new Intent(Menu.this, Registro.class);
                 startActivity(navegacion4);
             }
         });
+
+         */
         btnFormulario2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

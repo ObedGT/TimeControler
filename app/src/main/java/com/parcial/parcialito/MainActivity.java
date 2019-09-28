@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion = new Intent(MainActivity.this, Menu.class);
+                Intent navegacion = new Intent(MainActivity.this, cuantasHorasLlevo.class);
                 Usuario user = validarLogin();
                 if(user != null){
                     if(user.getActivo() == 0){
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             //Cargamos el driver con el conector jdbc
             Class.forName(driver).newInstance();
-            Usuario user = new Usuario(txtUsuario.getText().toString(), txtPassword.getText().toString(), "", "", 0, 0);
+            Usuario user = new Usuario(txtUsuario.getText().toString(), txtPassword.getText().toString(),"","",0,0,0,0,"",0,0,0);
             usuario = new Login().execute(user).get();
         } catch(Exception ex){
             Toast.makeText(MainActivity.this, "Error al conectarse a la BD" + ex.getMessage(), Toast.LENGTH_LONG).show();

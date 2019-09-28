@@ -56,8 +56,8 @@ public class Users extends AppCompatActivity {
         try{
             //Cargamos el driver con el conector jdbc
             Class.forName(driver).newInstance();
-            Usuario user = new Usuario(lblNickName.getText().toString(), lblPassword.getText().toString(), lblNombre.getText().toString(), lblApellido.getText().toString(), Integer.valueOf(lblRol.getText().toString()),Integer.valueOf(lblActivo.getText().toString()));
-            usuario = new Login2().execute(user).get();
+            //Usuario user = new Usuario(lblNickName.getText().toString(), lblPassword.getText().toString(), lblNombre.getText().toString(), lblApellido.getText().toString(), Integer.valueOf(lblRol.getText().toString()),Integer.valueOf(lblActivo.getText().toString()));
+            //usuario = new Login2().execute(user).get();
         } catch(Exception ex){
             Toast.makeText(Users.this, "Error al conectarse a la BD" + ex.getMessage(), Toast.LENGTH_LONG).show();
         }

@@ -19,7 +19,7 @@ public class Usuario {
     //Constructor que recibe todos los parametros de usuario
 
 
-    public Usuario(String loginName, String password, String nombre, String apellido, int idRol, int activo) {
+    public Usuario(String loginName, String password, String nombre, String apellido, int idRol, int activo, int logroH, int fk_carrera, String ciclo, int celular, int chroma, int horaAcum) {
         this.loginName = loginName;
         this.password = password;
         this.nombre = nombre;

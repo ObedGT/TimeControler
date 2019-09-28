@@ -1,14 +1,14 @@
 package com.parcial.parcialito;
 
 import android.os.AsyncTask;
-import android.util.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login extends AsyncTask<Usuario, Void, Usuario> {
+public class DatosGrafica extends AsyncTask<Usuario, Void, Usuario> {
     Connection conexionMySql = null;
     private Statement st = null;
     private ResultSet rs = null;
@@ -16,7 +16,7 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
 
     @Override
     protected Usuario doInBackground(Usuario... datos) {
-        String sql = "select pk_loginName, password, fk_rol, activo from usuario where pk_loginName = '"+datos[0].getLoginName()+"' and password = '"+datos[0].getPassword() + "'";
+        String sql = "select  logroH, horaAcum from usuario where pk_loginName = '"+datos[0].getLoginName()+"'";
         String host = "192.168.1.9";
         String port = "3306";
         String dbName = "timecontroler";
@@ -30,7 +30,7 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
             {
                 do
                 {
-                    columnas = new Usuario(rs.getString("pk_loginName"), rs.getString("password"),"", "", rs.getInt("fk_rol"), rs.getInt("activo"),0,0,"",0,0,0);
+                    columnas = new Usuario("", "","", "", 0, 0,rs.getInt("logroH"),0,"",0,0,rs.getInt("horaAcum"));
                 }while(rs.next());
             }
         } catch (SQLException ex) {
