@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception ex) {
             ex.printStackTrace();
         }
-
          */
 
         //Asignamos el driver de conexion
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             //Cargamos el driver con el conector jdbc
             Class.forName(driver).newInstance();
-            Usuario user = new Usuario(txtUsuario.getText().toString(), txtPassword.getText().toString(), "", "", 0, 0);
+            Usuario user = new Usuario(txtUsuario.getText().toString(), txtPassword.getText().toString(),"","",0,0,0,0,"",0,0,0);
             usuario = new Login().execute(user).get();
         } catch(Exception ex){
             Toast.makeText(MainActivity.this, "Error al conectarse a la BD" + ex.getMessage(), Toast.LENGTH_LONG).show();
