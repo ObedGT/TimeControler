@@ -17,7 +17,7 @@ public class DatosGrafica extends AsyncTask<Usuario, Void, Usuario> {
     @Override
     protected Usuario doInBackground(Usuario... datos) {
         String sql = "select  logroH, horaAcum from usuario where pk_loginName = '"+datos[0].getLoginName()+"'";
-        String host = "192.168.1.9";
+        String host = "192.168.43.120";
         String port = "3306";
         String dbName = "timecontroler";
         String userName = "root";

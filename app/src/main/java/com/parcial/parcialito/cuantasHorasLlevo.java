@@ -24,10 +24,12 @@ public class cuantasHorasLlevo extends AppCompatActivity {
     private PieChart pieChart;
     private String [] pastel = new String[]{"Logrado","Faltante"};
     private int[] grafica = new int[2];
+    private int[] grafica2 = new int[2];
     private int[] colors = new int[]{Color.GREEN,Color.YELLOW};
     private int acumulado=0;
     private int logro=0;
     private String Usuario="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class cuantasHorasLlevo extends AppCompatActivity {
 
         logro = user.getLogroH();
         acumulado = user.getHoraAcum();
+        grafica2[0]=acumulado;
+        grafica2[1]=logro-acumulado;
         int pAcumulado=0;
         int pFaltante=0;
         pAcumulado=(acumulado*100)/logro;
@@ -109,7 +113,7 @@ public class cuantasHorasLlevo extends AppCompatActivity {
         for (int i =0; i<pastel.length;i++){
             LegendEntry entry=new LegendEntry();
             entry.formColor=colors[i];
-            entry.label=pastel[i];
+            entry.label=pastel[i]+ " " + grafica2[i] +"H";
             entries.add(entry);
         }
         legend.setCustom(entries);
@@ -124,9 +128,9 @@ public class cuantasHorasLlevo extends AppCompatActivity {
     }
 
     public void createCharts(){
-        pieChart=(PieChart)getSameChart(pieChart,"logros", Color.GRAY, 045333,3000);
-        pieChart.setHoleRadius(10);
-        pieChart.setTransparentCircleRadius(20);
+        pieChart=(PieChart)getSameChart(pieChart,"Tu logro", Color.GRAY, 045333,3000);
+        pieChart.setHoleRadius(20);
+        pieChart.setTransparentCircleRadius(12);
         pieChart.setData(getPieData());
         pieChart.invalidate();
         //pieChart.setDrawHoleEnabled(false);
@@ -134,13 +138,13 @@ public class cuantasHorasLlevo extends AppCompatActivity {
     }
     private DataSet getData(DataSet dataSet){
         dataSet.setColors(colors);
-        dataSet.setValueTextColor(Color.WHITE);
-        dataSet.setValueTextSize(10);
+        dataSet.setValueTextColor(Color.BLUE);
+        dataSet.setValueTextSize(20);
         return dataSet;
 
     }
     private PieData getPieData(){
-        PieDataSet pieDataSet=(PieDataSet)getData(new PieDataSet(getPieEntries(),"Tu Logro"));
+        PieDataSet pieDataSet=(PieDataSet)getData(new PieDataSet(getPieEntries(),""));
         pieDataSet.setSliceSpace(0);
         pieDataSet.setValueFormatter(new PercentFormatter());
 
