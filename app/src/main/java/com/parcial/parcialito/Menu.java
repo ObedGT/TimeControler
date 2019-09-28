@@ -8,32 +8,24 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
-    private ImageButton btnFotos;
-    private ImageButton btnVideo;
-    private ImageButton btnMaps;
-    private ImageButton btnCalc;
-    private Button btnFormulario;
-    private Button btnFormulario2;
+    private Button btnhoras;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu2);
-        btnFotos = (ImageButton) findViewById(R.id.btnGaleria);
-        btnVideo = (ImageButton) findViewById(R.id.btnVideo);
-        btnCalc = (ImageButton) findViewById(R.id.btnCalculadora);
-        btnFormulario = (Button) findViewById(R.id.btnFormulario);
-        btnFormulario2 = (Button) findViewById(R.id.btnFormulario2);
+        btnhoras = (Button) findViewById(R.id.btnhoras);
 
-        /*btnFotos.setOnClickListener(new View.OnClickListener() {
+        btnhoras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion1 = new Intent(Menu.this, Galeria.class);
+                Intent navegacion1 = new Intent(Menu.this, cuantasHorasLlevo.class);
                 startActivity(navegacion1);
             }
         });
 
+/*
         btnVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +49,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-         */
+
         btnFormulario2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,5 +57,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(navegacion5);
             }
         });
+        
+ */
     }
 }

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion = new Intent(MainActivity.this, cuantasHorasLlevo.class);
+                Intent navegacion = new Intent(MainActivity.this, Menu.class);
                 Usuario user = validarLogin();
                 if(user != null){
                     if(user.getActivo() == 0){
