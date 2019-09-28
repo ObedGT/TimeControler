@@ -10,12 +10,21 @@ public class Conexion {
     //Atributos de la clase
     private Connection conn = null;
 
-    private String host = "192.168.1.9";
+
+    private String host = "192.168.56.1";
     private String port = "3306";
     private String userName = "root";
     private String password = "admon";
     private String dbName = "timecontroler";
 
+
+/* Tus datos obed
+    private String host = "192.168.1.9";
+    private String port = "3306";
+    private String userName = "root";
+    private String password = "admon";
+    private String dbName = "timecontroler";
+*/
     //Metodo que obtiene la conexion a la base de datos
     public Connection connect(){
 

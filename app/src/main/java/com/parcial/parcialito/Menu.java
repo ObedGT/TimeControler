@@ -8,57 +8,57 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
-    private ImageButton btnFotos;
-    private ImageButton btnVideo;
-    private ImageButton btnMaps;
-    private ImageButton btnCalc;
-    private Button btnFormulario;
-    private Button btnFormulario2;
+    private Button btnhoras;
+    private Button btnagenda;
+    private Button btnnoti;
+    private Button btncontacto;
+    private Button btnasistir;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu2);
-        btnFotos = (ImageButton) findViewById(R.id.btnGaleria);
-        btnVideo = (ImageButton) findViewById(R.id.btnVideo);
-        btnCalc = (ImageButton) findViewById(R.id.btnCalculadora);
-        btnFormulario = (Button) findViewById(R.id.btnFormulario);
-        btnFormulario2 = (Button) findViewById(R.id.btnFormulario2);
+        btnhoras = (Button) findViewById(R.id.btnhoras);
+        btnagenda = (Button) findViewById(R.id.btnagenda);
+        btnnoti = (Button) findViewById(R.id.btnnoti);
+        btncontacto = (Button) findViewById(R.id.btncontacto);
+        btnasistir = (Button) findViewById(R.id.btnasistir);
 
-        btnFotos.setOnClickListener(new View.OnClickListener() {
+        btnhoras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion1 = new Intent(Menu.this, Galeria.class);
+                Intent navegacion1 = new Intent(Menu.this, Horas.class);
                 startActivity(navegacion1);
             }
         });
 
-        btnVideo.setOnClickListener(new View.OnClickListener() {
+        btnagenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion2 = new Intent(Menu.this, Video.class);
+                Intent navegacion2 = new Intent(Menu.this, Agenda.class);
                 startActivity(navegacion2);
             }
         });
-        btnCalc.setOnClickListener(new View.OnClickListener() {
+        btnnoti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion3 = new Intent(Menu.this, Calculadora.class);
+                Intent navegacion3 = new Intent(Menu.this, Notificaciones.class);
                 startActivity(navegacion3);
             }
         });
-        btnFormulario.setOnClickListener(new View.OnClickListener() {
+        btncontacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion4 = new Intent(Menu.this, Registro.class);
+                Intent navegacion4 = new Intent(Menu.this, Contacto.class);
                 startActivity(navegacion4);
             }
         });
-        btnFormulario2.setOnClickListener(new View.OnClickListener() {
+        btnasistir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion5 = new Intent(Menu.this, Users.class);
+                Intent navegacion5 = new Intent(Menu.this, Asistencia.class);
                 startActivity(navegacion5);
             }
         });

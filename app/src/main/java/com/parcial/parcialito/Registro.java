@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/*
 public class Registro extends AppCompatActivity {
 
     private EditText lblNombre;
@@ -64,3 +64,4 @@ public class Registro extends AppCompatActivity {
         return cliente;
     }
 }
+*/
