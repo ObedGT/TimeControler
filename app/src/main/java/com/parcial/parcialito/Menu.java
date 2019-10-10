@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
-    private Button btnhora;
+    private Button btnHora;
+    private Button btnNoti;
 
 
     @Override
@@ -16,13 +17,22 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu2);
 
-        btnhora = (Button) findViewById(R.id.btnhoras);
+        btnHora = (Button) findViewById(R.id.btnhoras);
+        btnNoti = (Button) findViewById(R.id.btnnoti);
 
-        btnhora.setOnClickListener(new View.OnClickListener() {
+        btnHora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent navegacion1 = new Intent(Menu.this, CuantasHorasLlevo.class);
                 startActivity(navegacion1);
+            }
+        });
+
+        btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent navegacion2 = new Intent(Menu.this, Notificaciones.class);
+                startActivity(navegacion2);
             }
         });
 

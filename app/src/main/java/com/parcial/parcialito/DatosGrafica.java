@@ -3,7 +3,6 @@ package com.parcial.parcialito;
 import android.os.AsyncTask;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,14 +16,11 @@ public class DatosGrafica extends AsyncTask<Usuario, Void, Usuario> {
     @Override
     protected Usuario doInBackground(Usuario... datos) {
         String sql = "select  logroH, horaAcum from usuario where pk_loginName = '"+datos[0].getLoginName()+"'";
-        String host = "192.168.43.120";
-        String port = "3306";
-        String dbName = "timecontroler";
-        String userName = "root";
-        String password = "admon";
         try{
-            conexionMySql = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
-            st = conexionMySql.createStatement();
+            Connection conn;
+            Conexion conexion = new Conexion();
+            conn = conexion.connect();
+            st = conn.createStatement();
             rs = st.executeQuery(sql);
             if(rs.first())
             {
