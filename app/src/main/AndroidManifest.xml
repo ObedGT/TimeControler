@@ -14,11 +14,7 @@
         <activity android:name=".Notificaciones"></activity>
         <activity android:name=".CuantasHorasLlevo" />
         <activity android:name=".Users" />
-        <activity android:name=".Registro" />
         <activity android:name=".Menu" />
-        <activity android:name=".Calculadora" />
-        <activity android:name=".Video" />
-        <activity android:name=".Galeria" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

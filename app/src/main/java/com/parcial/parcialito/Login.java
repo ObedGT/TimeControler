@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Login extends AsyncTask<Usuario, Void, Usuario> {
-    Connection conexionMySql = null;
+    //Connection conexionMySql = null;
+    private Connection conn;
     private Statement st = null;
     private ResultSet rs = null;
     private Usuario columnas = null;
@@ -26,7 +27,6 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
             //conexionMySql = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
 
             //st = conexionMySql.createStatement();
-            Connection conn;
             Conexion conexion = new Conexion();
             conn = conexion.connect();
             st = conn.createStatement();
@@ -46,10 +46,10 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
         {
             try
             {
-                if (conexionMySql!=null) {
+                if (conn!=null) {
                     st.close();
                     rs.close();
-                    conexionMySql.close();
+                    conn.close();
                 }
             } catch (SQLException e)
             {

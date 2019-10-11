@@ -10,6 +10,7 @@ public class Conexion {
     //Atributos de la clase
     private Connection conn = null;
 
+    private String driver = "com.mysql.jdbc.Driver";
     private String host = "192.168.1.3";
     private String port = "3306";
     private String userName = "root";
@@ -22,6 +23,8 @@ public class Conexion {
         try {
             // Creamos la conexión
 
+            //Cargamos el driver con el conector jdbc
+            Class.forName(driver).newInstance();
             String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
             conn = DriverManager.getConnection(url, userName, password);
         }
