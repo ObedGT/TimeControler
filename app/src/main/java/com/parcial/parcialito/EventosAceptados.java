@@ -7,21 +7,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class Notificaciones extends AppCompatActivity {
+public class EventosAceptados extends AppCompatActivity {
 
     private RecyclerView recyclerViewEvento;
     private RecyclerViewAdaptator adaptatorEvento;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notificaciones);
-
+        setContentView(R.layout.activity_eventos_aceptados);
         //instanciamos el RecyclerView
         recyclerViewEvento=(RecyclerView)findViewById(R.id.recyclerEvento);
         recyclerViewEvento.setLayoutManager(new LinearLayoutManager(this));
@@ -31,10 +27,10 @@ public class Notificaciones extends AppCompatActivity {
             adaptatorEvento=new RecyclerViewAdaptator(new BDEvento().execute(cargarUsuario()).get());
         } catch (ExecutionException e) {
             e.printStackTrace();
-            Toast.makeText(Notificaciones.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(EventosAceptados.this,  e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            Toast.makeText(Notificaciones.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(EventosAceptados.this,  e.getMessage(), Toast.LENGTH_LONG).show();
         }
         recyclerViewEvento.setAdapter(adaptatorEvento);
     }
@@ -42,7 +38,7 @@ public class Notificaciones extends AppCompatActivity {
     private String cargarUsuario() {
         SharedPreferences preferences = getSharedPreferences("username", MODE_PRIVATE);
         String loginName=preferences.getString("user","");
-        loginName += " 1";
+        loginName += " 2";
 
         return loginName;
     }

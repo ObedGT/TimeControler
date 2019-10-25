@@ -1,6 +1,7 @@
 package com.parcial.parcialito;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,13 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private EditText txtUsuario;
     private EditText txtPassword;
     private Button btnIngresar;
-    private ArrayList<Usuario> usuario = null;
+    private Button btnIniciarSesion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,17 @@ public class MainActivity extends AppCompatActivity {
         txtUsuario = (EditText) findViewById(R.id.txtUsuario);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnIngresar = (Button) findViewById(R.id.btnIngresar);
+        btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesion);
+
+        //Llama a las preferencias (cargar usuario y contraseña pre-registrado)
+        cargarPreferencias();
+
+        //action listener
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion = new Intent(MainActivity.this, Menu.class);
+                Intent navegacion1 = new Intent(MainActivity.this, Menu.class);
+                Intent navegacion2 = new Intent(MainActivity.this, Administrador.class);
                 Usuario user = validarLogin();
                 if(user != null){
                     if(user.getActivo() == 0){
@@ -34,13 +42,11 @@ public class MainActivity extends AppCompatActivity {
                         txtUsuario.setText("");
                         txtPassword.setText("");
                     } else if(user.getIdRol() == 1 && user.getActivo() == 1){
-                        txtUsuario.setText("");
-                        txtPassword.setText("");
-                        startActivity(navegacion);
+                        guardarPreferencias();
+                        startActivity(navegacion2);
                     } else if(user.getIdRol() == 2 && user.getActivo() == 1){
-                        txtUsuario.setText("");
-                        txtPassword.setText("");
-                        startActivity(navegacion);
+                        guardarPreferencias();
+                        startActivity(navegacion1);
                     }
                 } else{
                     txtUsuario.setText("");
@@ -49,6 +55,39 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent navegacion3 = new Intent(MainActivity.this, registrar.class);
+                startActivity(navegacion3);
+            }
+        });
+    }
+
+    //Método que sirve para guardar el Usuario en el dispositivo
+    public void guardarPreferencias(){
+        SharedPreferences preferences = getSharedPreferences("username", MODE_PRIVATE);
+
+        String usuario=txtUsuario.getText().toString();
+        String password=txtPassword.getText().toString();
+
+        SharedPreferences.Editor editor =preferences.edit();
+        editor.putString("user",usuario);
+        editor.putString("pass",password);
+
+        editor.commit();
+    }
+
+    public void cargarPreferencias(){
+        SharedPreferences preferences = getSharedPreferences("username", MODE_PRIVATE);
+
+        String loginName=preferences.getString("user","");
+        String password=preferences.getString("pass","");
+
+        txtUsuario.setText(loginName);
+        txtPassword.setText(password);
+
     }
 
     //Funcion que establece la conexion con la base de datos y retorna un objeto de tipo usuario
@@ -63,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+
         return usuario;
     }
+
+
 }

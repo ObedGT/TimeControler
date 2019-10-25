@@ -1,6 +1,8 @@
 package com.parcial.parcialito;
 
 
+import android.os.StrictMode;
+
 import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +13,7 @@ public class Conexion {
     private Connection conn = null;
 
     private String driver = "com.mysql.jdbc.Driver";
-    private String host = "192.168.1.3";
+    private String host = "192.168.1.5";
     private String port = "3306";
     private String userName = "root";
     private String password = "admon";
@@ -24,6 +26,8 @@ public class Conexion {
             // Creamos la conexión
 
             //Cargamos el driver con el conector jdbc
+            StrictMode.ThreadPolicy policy= new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
             Class.forName(driver).newInstance();
             String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
             conn = DriverManager.getConnection(url, userName, password);
