@@ -54,8 +54,8 @@
 
     <EditText
         android:id="@+id/txtNombre"
-        android:layout_width="276dp"
-        android:layout_height="44dp"
+        android:layout_width="287dp"
+        android:layout_height="47dp"
         android:background="@color/cardview_shadow_start_color"
         android:ems="10"
         android:hint="Nombre"
@@ -94,5 +94,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.886" />
+
+    <Spinner
+        android:id="@+id/spGenero"
+        android:layout_width="128dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.778" />
+
+    <Spinner
+        android:id="@+id/spCarrera"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
 
 </android.support.constraint.ConstraintLayout>

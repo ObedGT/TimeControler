@@ -9,8 +9,11 @@ import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parcial.parcialito.R;
@@ -23,12 +26,15 @@ import java.sql.Statement;
 
 public class AgregarUsuario extends AppCompatActivity {
 
+    private Spinner spinner;
+    private Spinner spinner2;
     private EditText txtCorreo;
     private EditText txtContraseña;
     private EditText txtNombre;
     private EditText txtApellido;
     private EditText txtCelular;
     private Button btnGuardar;
+    private int carr = 1;
 
 
     @Override
@@ -43,6 +49,28 @@ public class AgregarUsuario extends AppCompatActivity {
         txtCelular = (EditText) findViewById(R.id.txtCelular);
         btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
+        spinner = findViewById(R.id.spGenero);
+        spinner2 = findViewById(R.id.spCarrera);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Genero,R.layout.spinner_item_modificar);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Carrera,R.layout.spinner_item_modificar);
+        spinner2.setAdapter(adapter1);
+        spinner.setAdapter(adapter);
+
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                carr = spinner2.getSelectedItemPosition() +1;
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
 
 
 
@@ -79,7 +107,7 @@ public class AgregarUsuario extends AppCompatActivity {
 
         String[] cadena = txtCorreo.getText().toString().split("@");
         String usuario=cadena[0];
-        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, '"+txtCelular.getText().toString()+"',1)";
+        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, fk_carrera, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, "+carr+",r '"+txtCelular.getText().toString()+"','"+spinner.getSelectedItem()+"')";
         try {
             Conexion conexion = new Conexion();
             conn = conexion.connect();

@@ -13,7 +13,7 @@ public class Conexion {
     private Connection conn = null;
 
     private String driver = "com.mysql.jdbc.Driver";
-    private String host = "192.168.1.5";
+    private String host = "192.168.43.120";
     private String port = "3306";
     private String userName = "root";
     private String password = "admon";

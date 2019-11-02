@@ -62,11 +62,11 @@ public class BDPerfil extends AsyncTask<String, Void, List<PerfilModelo>> {
                             while (comparacion.next());
                         }
 
-                        String nombreCompleto = rs.getString("nombre") + " " + rs.getString("nombre");
+                        String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
                         String carrera = rs.getString("ciclo") + " año de " + rs.getString("carrera");
                         int chroma = rs.getInt("chroma");
                         int sexo = rs.getInt("sexo");
-                        perfil.add(new PerfilModelo(correo + "@uvg.edu.gt", nombreCompleto, carrera, loginName, "Eventos en común:" + eventos, chroma, sexo/*Agregar los apartados de perfilModelo*/));
+                        perfil.add(new PerfilModelo(correo , nombreCompleto, carrera, loginName, "Eventos en común:" + eventos, chroma, sexo/*Agregar los apartados de perfilModelo*/));
 
                         //parámetro para agregar una List versión 1
                         //evento.add(new EventoModelo(rs.getString("nombre"), rs.getString("descripcion"), fecha, rs.getString("fk_loginName")));

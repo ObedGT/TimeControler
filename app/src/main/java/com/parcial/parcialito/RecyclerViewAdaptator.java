@@ -4,6 +4,7 @@ package com.parcial.parcialito;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -30,18 +31,19 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
         //context
         private Context context;
         //variables
-        private TextView txtactividad, txtdescripcion, txtfecha, txtcoordinador;
+        private TextView txtActividad, txtDescripcion, txtFecha, txtCoordinador;
         private Button btnAceptar;
         private int id_evento, id_asistencia; //Contiene la id del evento
+        private String evento, coordinador;
         private String loginName, tipo, contenido="";
 
         public ViewHolder( View itemView) {
             super(itemView);
             context= itemView.getContext();
-            txtactividad= (TextView)itemView.findViewById(R.id.txtActividad);
-            txtdescripcion= (TextView)itemView.findViewById(R.id.txtDescripcion);
-            txtfecha= (TextView)itemView.findViewById(R.id.txtFecha);
-            txtcoordinador= (TextView)itemView.findViewById(R.id.txtCoordinador);
+            txtActividad= (TextView)itemView.findViewById(R.id.txtActividad);
+            txtDescripcion= (TextView)itemView.findViewById(R.id.txtDescripcion);
+            txtFecha= (TextView)itemView.findViewById(R.id.txtFecha);
+            txtCoordinador= (TextView)itemView.findViewById(R.id.txtCoordinador);
             btnAceptar= (Button)itemView.findViewById(R.id.btnAceptar);
 
 
@@ -58,6 +60,7 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     aceptarEvento();
+
                                 }
                             })
                             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -91,6 +94,7 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     rechazarEvento(motivo.getText().toString());
+
                                 }
                             })
                             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -142,14 +146,17 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
 
 
         }
+
         @RequiresApi(api = Build.VERSION_CODES.O)
         private void rechazarEvento(String descripcion){
             Connection conn = null;
             PreparedStatement pst1 = null;
             PreparedStatement pst2 = null;
+            PreparedStatement pst3 = null;
             String resultado;
             String update = "update asistencia set estado=2 where id_asistencia="+id_asistencia;
             String insert = "insert into inasistencia (fk_asistencia, descripcion, estado) values("+id_asistencia+",'"+descripcion+"',1)";
+            String sql = "insert into notificacion (origen, destino, fk_tipo, descripcion, horaCreacion, estado) values ('"+loginName+"', '"+coordinador+"', 3, '"+evento+"', now(), 1)";
 
             try{
                 //conexionMySql = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
@@ -162,6 +169,9 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
                 pst1.executeUpdate();
 
                 pst2 = conn.prepareStatement(insert);
+                pst2.executeUpdate();
+
+                pst2 = conn.prepareStatement(sql);
                 pst2.executeUpdate();
 
                 resultado="1";
@@ -180,6 +190,9 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
                     }
                     if (pst2!=null) {
                         pst2.close();
+                    }
+                    if (pst3!=null) {
+                        pst3.close();
                     }
                 } catch (SQLException e)
                 {
@@ -218,10 +231,12 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
 
     @Override
     public void onBindViewHolder(ViewHolder bolder, int position) {
-        bolder.txtactividad.setText(eventoLista.get(position).getActividad());
-        bolder.txtdescripcion.setText(eventoLista.get(position).getDescripcion());
-        bolder.txtfecha.setText(eventoLista.get(position).getFecha());
-        bolder.txtcoordinador.setText(eventoLista.get(position).getCoordinador());
+        bolder.txtActividad.setText(eventoLista.get(position).getActividad());
+        bolder.evento = bolder.txtActividad.getText().toString();
+        bolder.txtDescripcion.setText(eventoLista.get(position).getDescripcion());
+        bolder.txtFecha.setText(eventoLista.get(position).getFecha());
+        bolder.txtCoordinador.setText(eventoLista.get(position).getCoordinador());
+        bolder.coordinador = bolder.txtCoordinador.getText().toString();
 
         bolder.id_evento=eventoLista.get(position).getId();
         bolder.id_asistencia=eventoLista.get(position).getId_asistencia();

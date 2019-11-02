@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PonteEnContacto">
+    tools:context=".Notify">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:paddingBottom="10dp"
-            android:text="Perfiles en común"
+            android:text="Notificaciones"
             android:textAlignment="center"
             android:textSize="28dp" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerPerfil"
+            android:id="@+id/recyclerNotify"
             android:layout_width="match_parent"
-            android:layout_height="623dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </RelativeLayout>

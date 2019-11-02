@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+<string-array name="Carrera">
+    <item>Lics mecos</item>
+    <item>Ings Dioses</item>
+    <item>Master Alv</item>
+
+
+</string-array>
+</resources>
