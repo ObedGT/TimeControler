@@ -10,22 +10,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="76dp"
             android:paddingTop="5dp"
             android:paddingBottom="10dp"
-            android:text="Notificaciones"
+            android:text="NOTIFICACIONES"
             android:textAlignment="center"
             android:textSize="28dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerNotify"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="658dp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -2,12 +2,10 @@
 <resources>
 
 
-
-
 <string-array name="Carrera">
-    <item>Lics mecos</item>
-    <item>Ings Dioses</item>
-    <item>Master Alv</item>
+    <item>Carrera</item>
+    <item>Técnico en Informática</item>
+
 
 
 </string-array>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cuantashorasllevo"
     android:orientation="vertical"
     tools:context=".CuantasHorasLlevo">
 
@@ -11,11 +12,10 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="28dp"
-        android:textAlignment="center"
         android:paddingTop="5dp"
         android:paddingBottom="10dp"
-        android:text="Total de horas" />
+        android:textAlignment="center"
+        android:textSize="28dp" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
@@ -30,31 +30,34 @@
 
         <LinearLayout
             android:layout_width="228dp"
-            android:layout_height="wrap_content"
+            android:layout_height="105dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="30dp"
+                android:paddingLeft="37dp"
                 android:paddingTop="10dp"
-                android:text="Horas Acumuladas:" />
+                android:text="Horas Acumuladas:"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="30dp"
-                android:text="Tu Meta:" />
+                android:paddingLeft="37dp"
+                android:text="Tu Meta:"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="30dp"
+                android:paddingLeft="37dp"
+                android:paddingBottom="5dp"
                 android:text="Horas Faltantes:"
-                android:paddingBottom="5dp"/>
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,21 +69,24 @@
                 android:id="@+id/txtAcumuladas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="37dp"
                 android:paddingTop="10dp"
                 android:text="" />
 
             <TextView
                 android:id="@+id/txtMeta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="37dp"
                 android:text="" />
 
             <TextView
                 android:id="@+id/txtFaltantes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:paddingBottom="5dp"/>
+                android:paddingLeft="37dp"
+                android:paddingBottom="5dp"
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 

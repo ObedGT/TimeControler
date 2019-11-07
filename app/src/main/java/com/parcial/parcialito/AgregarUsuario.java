@@ -28,13 +28,15 @@ public class AgregarUsuario extends AppCompatActivity {
 
     private Spinner spinner;
     private Spinner spinner2;
+    private int carr;
+
     private EditText txtCorreo;
     private EditText txtContraseña;
     private EditText txtNombre;
     private EditText txtApellido;
     private EditText txtCelular;
     private Button btnGuardar;
-    private int carr = 1;
+
 
 
     @Override
@@ -61,15 +63,12 @@ public class AgregarUsuario extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 carr = spinner2.getSelectedItemPosition() +1;
-
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
         });
 
 
@@ -107,7 +106,7 @@ public class AgregarUsuario extends AppCompatActivity {
 
         String[] cadena = txtCorreo.getText().toString().split("@");
         String usuario=cadena[0];
-        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, fk_carrera, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, "+carr+",r '"+txtCelular.getText().toString()+"','"+spinner.getSelectedItem()+"')";
+        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, fk_carrera, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, "+carr+", '"+txtCelular.getText().toString()+"','"+spinner.getSelectedItem()+"')";
         try {
             Conexion conexion = new Conexion();
             conn = conexion.connect();
