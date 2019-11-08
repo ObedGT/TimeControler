@@ -22,7 +22,7 @@ import java.util.List;
 
 public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerViewAdaptatorNotify.ViewHolder>{
 
-    public static class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         //context
         private Context context;
         //variables
@@ -31,6 +31,7 @@ public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerVi
         private String origen;
         private int id; //Contiene la id de la notificacion
         private String loginName;
+        private int posicion;
 
         public ViewHolder( View itemView) {
             super(itemView);
@@ -79,6 +80,7 @@ public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerVi
                 public void onClick(View v) {
 
                     ocultarNotificion();
+
                 }
             });
         }
@@ -98,6 +100,7 @@ public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerVi
             //btnAceptar.setOnClickListener(this);
         }
 
+
         @RequiresApi(api = Build.VERSION_CODES.O)
         private void ocultarNotificion(){
             Connection conn = null;
@@ -110,6 +113,11 @@ public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerVi
 
                 pst1 = conn.prepareStatement(sql);
                 pst1.executeUpdate();
+
+                notifyLista.remove(posicion);
+                //método que actualiza el recycler view
+                notifyDataSetChanged();
+
             } catch (SQLException ex) {
             }
             finally
@@ -210,6 +218,7 @@ public class RecyclerViewAdaptatorNotify extends RecyclerView.Adapter<RecyclerVi
         bolder.txtOrigen.setText("El usuario "+notifyLista.get(position).getOrigen());
         bolder.origen = notifyLista.get(position).getOrigen();
         bolder.txtDescrip.setText(notifyLista.get(position).getDescripcion());
+        bolder.posicion = position;
 
         bolder.loginName=notifyLista.get(position).getDestino();
         bolder.id=notifyLista.get(position).getIdNotify();

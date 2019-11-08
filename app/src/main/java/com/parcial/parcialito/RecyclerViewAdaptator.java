@@ -27,7 +27,7 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
 
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         //context
         private Context context;
         //variables
@@ -36,6 +36,7 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
         private int id_evento, id_asistencia; //Contiene la id del evento
         private String evento, coordinador;
         private String loginName, tipo, contenido="";
+        private int posicion;
 
         public ViewHolder( View itemView) {
             super(itemView);
@@ -94,6 +95,15 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     rechazarEvento(motivo.getText().toString());
+                                    /*
+                                    //forma para cerrar la activity usando context
+                                    ((Notificaciones)context).finish();
+
+                                    //forma para abrir una activity usando context
+                                    Intent intent = new Intent(context, Notificaciones.class);
+                                    context.startActivity(intent);
+
+                                     */
 
                                 }
                             })
@@ -137,6 +147,9 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
 
             }
             if(result.equals("1")){
+                eventoLista.remove(posicion);
+                //método que actualiza el recycler view
+                notifyDataSetChanged();
                 Toast.makeText(context, "Has aceptado un evento" , Toast.LENGTH_LONG).show();
             }
             else{
@@ -173,6 +186,10 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
 
                 pst2 = conn.prepareStatement(sql);
                 pst2.executeUpdate();
+
+                eventoLista.remove(posicion);
+                //método que actualiza el recycler view
+                notifyDataSetChanged();
 
                 resultado="1";
             } catch (SQLException ex) {
@@ -237,6 +254,7 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
         bolder.txtFecha.setText(eventoLista.get(position).getFecha());
         bolder.txtCoordinador.setText(eventoLista.get(position).getCoordinador());
         bolder.coordinador = bolder.txtCoordinador.getText().toString();
+        bolder.posicion = position;
 
         bolder.id_evento=eventoLista.get(position).getId();
         bolder.id_asistencia=eventoLista.get(position).getId_asistencia();
