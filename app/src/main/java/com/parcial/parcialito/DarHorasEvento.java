@@ -9,36 +9,36 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
-public class PonteEnContacto extends AppCompatActivity {
-    private RecyclerView recyclerViewPerfil;
-    private RecyclerViewAdaptatorPerfiles adaptatorPerfil;
+public class DarHorasEvento extends AppCompatActivity {
+
+    private RecyclerView recyclerViewEvento;
+    private RecyclerViewAdaptator adaptatorEvento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponte_en_contacto);
-
+        setContentView(R.layout.activity_dar_horas_evento);
         //instanciamos el RecyclerView
-        recyclerViewPerfil=(RecyclerView)findViewById(R.id.recyclerPerfil);
-        recyclerViewPerfil.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewEvento = (RecyclerView) findViewById(R.id.recyclerEvento);
+        recyclerViewEvento.setLayoutManager(new LinearLayoutManager(this));
 
         //le agregamos los eventos al RecyclerView
         try {
-            adaptatorPerfil=new RecyclerViewAdaptatorPerfiles(new BDPerfil().execute(cargarUsuario()).get());
+            adaptatorEvento = new RecyclerViewAdaptator(new BDEvento().execute(cargarUsuario()).get());
         } catch (ExecutionException e) {
             e.printStackTrace();
-            Toast.makeText(PonteEnContacto.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(DarHorasEvento.this, e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            Toast.makeText(PonteEnContacto.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(DarHorasEvento.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        recyclerViewPerfil.setAdapter(adaptatorPerfil);
+        recyclerViewEvento.setAdapter(adaptatorEvento);
     }
 
     private String cargarUsuario() {
         SharedPreferences preferences = getSharedPreferences("username", MODE_PRIVATE);
-        String loginName=preferences.getString("user","");
-        loginName += " 1";
+        String loginName = preferences.getString("user", "");
+        loginName += " 3";
 
         return loginName;
     }

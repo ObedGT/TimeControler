@@ -9,14 +9,14 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
-public class PonteEnContacto extends AppCompatActivity {
+public class DarHorasPerfil extends AppCompatActivity {
     private RecyclerView recyclerViewPerfil;
     private RecyclerViewAdaptatorPerfiles adaptatorPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponte_en_contacto);
+        setContentView(R.layout.activity_dar_horas_perfil);
 
         //instanciamos el RecyclerView
         recyclerViewPerfil=(RecyclerView)findViewById(R.id.recyclerPerfil);
@@ -27,10 +27,10 @@ public class PonteEnContacto extends AppCompatActivity {
             adaptatorPerfil=new RecyclerViewAdaptatorPerfiles(new BDPerfil().execute(cargarUsuario()).get());
         } catch (ExecutionException e) {
             e.printStackTrace();
-            Toast.makeText(PonteEnContacto.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(DarHorasPerfil.this,  e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            Toast.makeText(PonteEnContacto.this,  e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(DarHorasPerfil.this,  e.getMessage(), Toast.LENGTH_LONG).show();
         }
         recyclerViewPerfil.setAdapter(adaptatorPerfil);
     }
@@ -38,7 +38,7 @@ public class PonteEnContacto extends AppCompatActivity {
     private String cargarUsuario() {
         SharedPreferences preferences = getSharedPreferences("username", MODE_PRIVATE);
         String loginName=preferences.getString("user","");
-        loginName += " 1";
+        loginName += " 2";
 
         return loginName;
     }

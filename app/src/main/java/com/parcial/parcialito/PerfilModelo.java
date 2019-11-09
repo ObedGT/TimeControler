@@ -3,11 +3,12 @@ package com.parcial.parcialito;
 public class PerfilModelo {
     private String correo, nombre, carrera, loginName, eventosComun;
     private int chroma, sexo;
+    private String tipo;
 
     public PerfilModelo() {
     }
 
-    public PerfilModelo(String correo, String nombre,  String carrera, String loginName, String eventosComun, int chroma, int sexo) {
+    public PerfilModelo(String correo, String nombre,  String carrera, String loginName, String eventosComun, int chroma, int sexo, String tipo) {
         this.correo= correo;
         this.nombre = nombre;
         this.carrera = carrera;
@@ -15,6 +16,7 @@ public class PerfilModelo {
         this.eventosComun = eventosComun;
         this.chroma = chroma;
         this.sexo = sexo;
+        this.tipo = tipo;
     }
 
     public String getCorreo() {
@@ -71,5 +73,13 @@ public class PerfilModelo {
 
     public void setSexo(int sexo) {
         this.sexo = sexo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

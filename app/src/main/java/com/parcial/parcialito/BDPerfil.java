@@ -18,9 +18,11 @@ public class BDPerfil extends AsyncTask<String, Void, List<PerfilModelo>> {
 
     protected List<PerfilModelo> doInBackground(String... datos) {
         //Crea el query para extraer los datos de la BD
-        String sql1 = "select u.pk_loginName, u.nombre, u.apellido, c.nombre AS 'carrera', u.ciclo, u.chroma, u.sexo from usuario u, carrera c where u.activo = 1 and u.fk_rol = 2 and u.fk_carrera = c.id_carrera";
+        String sql1 = "select u.pk_loginName, u.nombre, u.apellido, c.nombre AS 'carrera', u.ciclo, u.celular, u.chroma, u.sexo from usuario u, carrera c where u.activo = 1 and u.fk_rol = 2 and u.fk_carrera = c.id_carrera";
 
-        String loginName=datos[0];
+        String[] cadena = datos[0].split(" ");
+        String loginName=cadena[0];
+        String tipo =cadena[1];
 
         try{
             //Establece la conexion
@@ -64,10 +66,15 @@ public class BDPerfil extends AsyncTask<String, Void, List<PerfilModelo>> {
 
                         String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
                         String carrera = rs.getString("ciclo") + " año de " + rs.getString("carrera");
+                        int celular = rs.getInt("celular");
                         int chroma = rs.getInt("chroma");
                         int sexo = rs.getInt("sexo");
-                        perfil.add(new PerfilModelo(correo , nombreCompleto, carrera, loginName, "Eventos en común:" + eventos, chroma, sexo/*Agregar los apartados de perfilModelo*/));
-
+                        if (tipo.equals("1")) {
+                            perfil.add(new PerfilModelo(correo, nombreCompleto, carrera, loginName, "Eventos en común:" + eventos, chroma, sexo, tipo/*Agregar los apartados de perfilModelo*/));
+                        }
+                        else if (tipo.equals("2")){
+                            perfil.add(new PerfilModelo(correo, nombreCompleto, carrera, loginName, "Celular: " + celular, chroma, sexo, tipo/*Agregar los apartados de perfilModelo*/));
+                        }
                         //parámetro para agregar una List versión 1
                         //evento.add(new EventoModelo(rs.getString("nombre"), rs.getString("descripcion"), fecha, rs.getString("fk_loginName")));
 

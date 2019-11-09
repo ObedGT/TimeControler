@@ -34,20 +34,20 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="37dp"
+                android:text="Tu Meta:"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="37dp"
                 android:paddingTop="10dp"
                 android:text="Horas Acumuladas:"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="37dp"
-                android:text="Tu Meta:"
                 android:textSize="18sp" />
 
             <TextView
@@ -66,18 +66,18 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtMeta"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingLeft="37dp"
+                android:text="" />
+
+            <TextView
                 android:id="@+id/txtAcumuladas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="37dp"
                 android:paddingTop="10dp"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/txtMeta"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:paddingLeft="37dp"
                 android:text="" />
 
             <TextView

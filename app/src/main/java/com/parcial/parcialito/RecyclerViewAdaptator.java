@@ -122,6 +122,21 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
             //Definir los click listener
             //btnAceptar.setOnClickListener(this);
         }
+        void HacerOnClickListener3(){
+
+            btnAceptar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DarHorasPerfil.class);
+                    intent.putExtra("id", ""+id_evento);
+                    context.startActivity(intent);
+                }
+            });
+
+
+            //Definir los click listener
+            //btnAceptar.setOnClickListener(this);
+        }
 
             //Click listener
        /* @Override
@@ -268,6 +283,10 @@ public class RecyclerViewAdaptator extends RecyclerView.Adapter<RecyclerViewAdap
         else if(bolder.tipo.equals("2")){
             bolder.btnAceptar.setText("No podré asistir");
             bolder.HacerOnClickListener2();
+        }
+        else if(bolder.tipo.equals("3")){
+            bolder.btnAceptar.setText("Administrar asistencias");
+            bolder.HacerOnClickListener3();
         }
 
 

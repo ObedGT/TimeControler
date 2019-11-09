@@ -1,8 +1,13 @@
 package com.parcial.parcialito;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,14 +27,14 @@ public class Administrador extends AppCompatActivity {
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
         btnEvento = (Button) findViewById(R.id.btnEvento);
         btnAsistencia = (Button) findViewById(R.id.btnAsistencia);
-    btnInasistencia = (Button) findViewById(R.id.btnInasistencia);
+        btnInasistencia = (Button) findViewById(R.id.btnInasistencia);
 
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion1 = new Intent(Administrador.this, AgregarUsuario.class);
-                startActivity(navegacion1);
+                Intent navegacion = new Intent(Administrador.this, AgregarUsuario.class);
+                startActivity(navegacion);
             }
         });
 
@@ -37,8 +42,16 @@ public class Administrador extends AppCompatActivity {
         btnEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion2 = new Intent(Administrador.this, CrearEvento.class);
-                startActivity(navegacion2);
+                Intent navegacion = new Intent(Administrador.this, CrearEvento.class);
+                startActivity(navegacion);
+            }
+        });
+
+        btnAsistencia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent navegacion = new Intent(Administrador.this, DarHorasEvento.class);
+                startActivity(navegacion);
             }
         });
 
@@ -49,5 +62,36 @@ public class Administrador extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botón al pulsar ir a atrás
+            AlertDialog.Builder alerta = new AlertDialog.Builder(Administrador.this);
+            alerta.setMessage("¿Desea Salir de la Aplicación?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            finishAffinity();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog titulo = alerta.create();
+            titulo.setTitle("Salir");
+            titulo.show();
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -81,8 +81,8 @@ public class CrearEvento extends AppCompatActivity implements View.OnClickListen
 
 
 
-                if (txtNombre.getText().toString().isEmpty() && txtDescripcion.getText().toString().isEmpty() && txtInicio.getText().toString().isEmpty() && txtFinal.getText().toString().isEmpty() && txtCantidad.getText().toString().isEmpty() && txtLimite.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Todos los campos vacíos, por favor ingrese los datos requeridos", Toast.LENGTH_LONG).show();
+                if (txtNombre.getText().toString().isEmpty() || txtDescripcion.getText().toString().isEmpty() || txtInicio.getText().toString().isEmpty() && txtFinal.getText().toString().isEmpty() || txtCantidad.getText().toString().isEmpty() ) {
+                    Toast.makeText(getApplicationContext(), "algún campo vacío, por favor ingrese los datos requeridos", Toast.LENGTH_LONG).show();
                 } else {
                     AgregarRegistro();
                     txtNombre.setText("");
@@ -128,7 +128,7 @@ public class CrearEvento extends AppCompatActivity implements View.OnClickListen
             String dateInicio = dateTime +" " +time;
             String dateFin = dateTime1 +" " +time1;
 
-            String sql="insert into evento(nombre, descripcion,  estado, fk_loginName, fechaInicio, fechaFin, cantidadH, dCancelar) values('" + txtNombre.getText().toString() + "', '" + txtDescripcion.getText().toString()+"' ,  1,'admin', '"  + dateInicio+ "', '"  + dateFin+ "'," +  Integer.parseInt(txtCantidad.getText().toString() )+ ", "+  Integer.parseInt(txtLimite.getText().toString()) +")";
+            String sql="insert into evento(nombre, descripcion,  estado, fk_loginName, fechaInicio, fechaFin, cantidadH) values('" + txtNombre.getText().toString() + "', '" + txtDescripcion.getText().toString()+"' ,  1,'admin', '"  + dateInicio+ "', '"  + dateFin+ "'," +  Integer.parseInt(txtCantidad.getText().toString() )+ ")";
 
             Conexion conexion = new Conexion();
             conn = conexion.connect();
