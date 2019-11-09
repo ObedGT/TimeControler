@@ -27,15 +27,14 @@ import java.sql.Statement;
 public class AgregarUsuario extends AppCompatActivity {
 
     private Spinner spinner;
-    private Spinner spinner2;
-    private int carr;
+
+
 
     private EditText txtCorreo;
     private EditText txtContraseña;
     private EditText txtNombre;
     private EditText txtApellido;
     private EditText txtCelular;
-    private EditText txtLogroH;
     private Button btnGuardar;
 
 
@@ -43,24 +42,23 @@ public class AgregarUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_usuario);
+        setContentView(R.layout.activity_agregar_usuario2);
 
         txtCorreo = (EditText) findViewById(R.id.txtUsuario);
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
         txtNombre = (EditText) findViewById(R.id.txtNombre);
         txtApellido = (EditText) findViewById(R.id.txtApellido);
         txtCelular = (EditText) findViewById(R.id.txtCelular);
-        txtCelular = (EditText) findViewById(R.id.txtLogroH);
         btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
         spinner = findViewById(R.id.spGenero);
-        spinner2 = findViewById(R.id.spCarrera);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Genero,R.layout.spinner_item_modificar);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Carrera,R.layout.spinner_item_modificar);
-        spinner2.setAdapter(adapter1);
+       //  ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Carrera,R.layout.spinner_item_modificar);
+
         spinner.setAdapter(adapter);
 
-
+/*
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -72,14 +70,14 @@ public class AgregarUsuario extends AppCompatActivity {
 
             }
         });
-
+*/
 
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                if (txtNombre.getText().toString().isEmpty() || txtCorreo.getText().toString().isEmpty() || txtContraseña.getText().toString().isEmpty() || txtNombre.getText().toString().isEmpty() || txtApellido.getText().toString().isEmpty() || txtCelular.getText().toString().isEmpty() || txtLogroH.getText().toString().isEmpty()) {
+                if (txtNombre.getText().toString().isEmpty() || txtCorreo.getText().toString().isEmpty() || txtContraseña.getText().toString().isEmpty() || txtNombre.getText().toString().isEmpty() || txtApellido.getText().toString().isEmpty() || txtCelular.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Todos los campos vacíos, por favor ingrese los datos requeridos", Toast.LENGTH_LONG).show();
                 } else {
                     AgregarRegistro();
@@ -88,7 +86,7 @@ public class AgregarUsuario extends AppCompatActivity {
                     txtNombre.setText("");
                     txtApellido.setText("");
                     txtCelular.setText("");
-                    txtLogroH.setText("");
+
 
 
 
@@ -108,7 +106,7 @@ public class AgregarUsuario extends AppCompatActivity {
 
         String[] cadena = txtCorreo.getText().toString().split("@");
         String usuario=cadena[0];
-        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, fk_carrera, celular, logroH, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, "+carr+", '"+txtCelular.getText().toString()+"', "+txtLogroH.toString()+", '"+spinner.getSelectedItem()+"')";
+        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 1, 1, '"+txtCelular.getText().toString()+"', '"+spinner.getSelectedItem()+"')";
         try {
             Conexion conexion = new Conexion();
             conn = conexion.connect();

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent navegacion3 = new Intent(MainActivity.this, registrar.class);
+                Intent navegacion3 = new Intent(MainActivity.this, registrar1.class);
                 startActivity(navegacion3);
             }
         });

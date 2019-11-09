@@ -8,6 +8,19 @@
     tools:context=".Menu">
 
     <Button
+        android:id="@+id/btnConfigurar"
+        android:layout_width="31dp"
+        android:layout_height="41dp"
+        android:enabled="false"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
         android:id="@+id/btnhoras"
         android:layout_width="215dp"
         android:layout_height="60dp"

@@ -38,17 +38,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.618" />
 
-    <Spinner
-        android:id="@+id/spCarrera"
-        android:layout_width="128dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
-
     <Button
         android:id="@+id/btnGuardar"
         android:layout_width="122dp"
@@ -83,10 +72,10 @@
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
+        app:layout_constraintVertical_bias="0.735" />
 
     <EditText
         android:id="@+id/txtNombre"
@@ -102,21 +91,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4" />
-
-    <EditText
-        android:id="@+id/txtLogroH"
-        android:layout_width="120dp"
-        android:layout_height="46dp"
-        android:background="@color/cardview_shadow_start_color"
-        android:ems="10"
-        android:hint="Meta de Horas"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.776"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
 
     <EditText
         android:id="@+id/txtApellido"

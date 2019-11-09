@@ -18,6 +18,7 @@ public class Menu extends AppCompatActivity {
     private Button btnNoti;
     private Button btnPonte;
     private Button btnAsistir;
+    private Button btnConfigurar;
 
 
     @Override
@@ -30,11 +31,12 @@ public class Menu extends AppCompatActivity {
         btnNoti = (Button) findViewById(R.id.btnnoti);
         btnPonte = (Button) findViewById(R.id.btncontacto);
         btnAsistir = (Button) findViewById(R.id.btnasistir);
+        btnConfigurar = (Button) findViewById(R.id.btnConfigurar);
 
         btnHora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion = new Intent(Menu.this, CuantasHorasLlevo.class);
+                Intent navegacion = new Intent(Menu.this, CuantasHorasLlevo1.class);
                 startActivity(navegacion);
             }
         });
@@ -71,6 +73,13 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+      btnConfigurar.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent navegacion = new Intent(Menu.this, ConfUsuario.class);
+              startActivity(navegacion);
+          }
+      });
     }
 
     @Override

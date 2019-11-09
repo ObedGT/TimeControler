@@ -1,12 +1,9 @@
 package com.parcial.parcialito;
 
-
-
 import android.os.Build;
-import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,15 +12,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.parcial.parcialito.R;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class registrar extends AppCompatActivity {
+public class registrar1 extends AppCompatActivity {
 
     private Spinner spinner;
     private Spinner spinner2;
@@ -34,14 +28,8 @@ public class registrar extends AppCompatActivity {
     private EditText txtNombre;
     private EditText txtApellido;
     private EditText txtCelular;
+    private  EditText txtLogroH;
     private Button btnGuardar;
-
-
-
-
-
-
-
     private Connection conn;
     private Statement st = null;
 
@@ -49,12 +37,12 @@ public class registrar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_usuario);
-
         txtCorreo = (EditText) findViewById(R.id.txtUsuario);
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
         txtNombre = (EditText) findViewById(R.id.txtNombre);
         txtApellido = (EditText) findViewById(R.id.txtApellido);
         txtCelular = (EditText) findViewById(R.id.txtCelular);
+        txtLogroH = (EditText) findViewById(R.id.txtLogroH);
         btnGuardar = (Button) findViewById(R.id.btnGuardar);
 
 
@@ -103,6 +91,7 @@ public class registrar extends AppCompatActivity {
                     txtNombre.setText("");
                     txtApellido.setText("");
                     txtCelular.setText("");
+                    txtLogroH.setText("");
 
 
 
@@ -121,7 +110,7 @@ public class registrar extends AppCompatActivity {
 
         String[] cadena = txtCorreo.getText().toString().split("@");
         String usuario=cadena[0];
-        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, fk_carrera, celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 2, 1, "+carr+",'"+txtCelular.getText().toString()+"','"+spinner.getSelectedItem()+"')";
+        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, logroH, fk_carrera, Celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 2, 1, " +  Integer.parseInt(txtLogroH.getText().toString() )+ ","+carr+",'"+txtCelular.getText().toString()+"','"+spinner.getSelectedItem()+"')";
 
         try {
             Conexion conexion = new Conexion();
@@ -153,5 +142,4 @@ public class registrar extends AppCompatActivity {
 
 
 }
-
 

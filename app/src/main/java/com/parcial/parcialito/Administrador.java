@@ -18,7 +18,7 @@ public class Administrador extends AppCompatActivity {
     private  Button btnEvento;
     private  Button btnAsistencia;
     private  Button btnInasistencia;
-
+    private Button btnConfigurar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class Administrador extends AppCompatActivity {
         btnEvento = (Button) findViewById(R.id.btnEvento);
         btnAsistencia = (Button) findViewById(R.id.btnAsistencia);
         btnInasistencia = (Button) findViewById(R.id.btnInasistencia);
+        btnConfigurar = (Button) findViewById(R.id.btnConfigurar);
 
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,13 @@ public class Administrador extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent navegacion = new Intent(Administrador.this, DarHorasEvento.class);
+                startActivity(navegacion);
+            }
+        });
+        btnConfigurar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent navegacion = new Intent(Administrador.this, ConfUsuario.class);
                 startActivity(navegacion);
             }
         });

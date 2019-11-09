@@ -7,6 +7,21 @@
     android:background="@drawable/menuadministrador"
     tools:context=".Administrador">
 
+
+
+    <Button
+        android:id="@+id/btnConfigurar"
+        android:layout_width="31dp"
+        android:layout_height="33dp"
+        android:enabled="false"
+        android:background="@color/cardview_shadow_end_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
     <Button
         android:id="@+id/btnAgregar"
         android:layout_width="202dp"
@@ -18,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <Button
         android:id="@+id/btnEvento"
@@ -31,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.396" />
 
     <Button
         android:id="@+id/btnAsistencia"
@@ -44,18 +59,16 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495" />
+        app:layout_constraintVertical_bias="0.607" />
 
     <Button
         android:id="@+id/btnInasistencia"
-        android:layout_width="202dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="37dp"
+        android:layout_height="32dp"
         android:background="@color/cardview_shadow_end_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
