@@ -28,6 +28,7 @@ public class registrar extends AppCompatActivity {
     private Spinner spinner;
     private Spinner spinner2;
     private int carr;
+    private int gen;
 
     private EditText txtCorreo;
     private EditText txtContraseña;
@@ -72,6 +73,7 @@ public class registrar extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 carr = spinner2.getSelectedItemPosition() +1;
+                gen = spinner2.getSelectedItemPosition() +1;
 
 
             }

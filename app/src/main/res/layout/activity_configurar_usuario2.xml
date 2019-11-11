@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgraund"
-    tools:context=".ConfUsuario">
-
-    <Spinner
-        android:id="@+id/spCiclo"
-        android:layout_width="234dp"
-        android:layout_height="46dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+    tools:context=".ConfUsuarioAdmin">
 
     <TextView
         android:id="@+id/txtVista2"
@@ -35,21 +24,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.051" />
 
-    <EditText
-        android:id="@+id/txtCelular"
-        android:layout_width="239dp"
-        android:layout_height="44dp"
-        android:background="@color/cardview_shadow_start_color"
-        android:ems="10"
-        android:hint="Ingrese nuevo No.Celular"
-        android:inputType="phone"
-        android:maxLength="8"
+    <TextView
+        android:id="@+id/txtVista"
+        android:layout_width="317dp"
+        android:layout_height="58dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/cardview_shadow_end_color"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <EditText
         android:id="@+id/txtLogroH"
@@ -62,26 +50,23 @@
         android:maxLength="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.371" />
 
-    <TextView
-        android:id="@+id/txtVista"
-        android:layout_width="317dp"
-        android:layout_height="58dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/cardview_shadow_end_color"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
+    <EditText
+        android:id="@+id/txtCelular"
+        android:layout_width="239dp"
+        android:layout_height="44dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:ems="10"
+        android:hint="Ingrese nuevo No.Celular"
+        android:inputType="phone"
+        android:maxLength="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGuardar"
@@ -93,6 +78,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.683" />
 
 </android.support.constraint.ConstraintLayout>

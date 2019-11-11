@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
     private Button btnHora;
@@ -31,7 +30,7 @@ public class Menu extends AppCompatActivity {
         btnNoti = (Button) findViewById(R.id.btnnoti);
         btnPonte = (Button) findViewById(R.id.btncontacto);
         btnAsistir = (Button) findViewById(R.id.btnasistir);
-        btnConfigurar = (Button) findViewById(R.id.btnConfigurar);
+        btnConfigurar = (Button) findViewById(R.id.btnConf);
 
         btnHora.setOnClickListener(new View.OnClickListener() {
             @Override

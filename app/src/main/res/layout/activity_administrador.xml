@@ -8,12 +8,22 @@
     tools:context=".Administrador">
 
 
-
     <Button
-        android:id="@+id/btnConfigurar"
+        android:id="@+id/btnNotificaciones"
         android:layout_width="31dp"
         android:layout_height="33dp"
-        android:enabled="false"
+        android:background="@color/cardview_shadow_end_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/btnConf"
+        android:layout_width="31dp"
+        android:layout_height="33dp"
         android:background="@color/cardview_shadow_end_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

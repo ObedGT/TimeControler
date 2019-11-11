@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources>
+
+    <string-array name="semestre">
+        <item>Semestre</item>
+        <item>Semestre 1</item>
+        <item>Semestre 2</item>
+        <item>Semestre 3</item>
+        <item>Semestre 4</item>
+        <item>Semestre 5</item>
+        <item>Semestre 6</item>
+        <item>Semestre 7</item>
+        <item>Semestre 8</item>
+        <item>Semestre 9</item>
+        <item>Semestre 10</item>
+
+    </string-array>
+
+
+</resources>

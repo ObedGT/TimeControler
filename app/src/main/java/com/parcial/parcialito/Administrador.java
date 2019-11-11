@@ -11,14 +11,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.parcial.parcialito.R;
-
 public class Administrador extends AppCompatActivity {
     private Button btnAgregar;
     private  Button btnEvento;
     private  Button btnAsistencia;
     private  Button btnInasistencia;
-    private Button btnConfigurar;
+    private Button btnConf;
+    private Button btnNotificaciones;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,8 @@ public class Administrador extends AppCompatActivity {
         btnEvento = (Button) findViewById(R.id.btnEvento);
         btnAsistencia = (Button) findViewById(R.id.btnAsistencia);
         btnInasistencia = (Button) findViewById(R.id.btnInasistencia);
-        btnConfigurar = (Button) findViewById(R.id.btnConfigurar);
+        btnConf = (Button) findViewById(R.id.btnConf);
+        btnNotificaciones = (Button) findViewById(R.id.btnNotificaciones);
 
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -55,19 +55,20 @@ public class Administrador extends AppCompatActivity {
                 startActivity(navegacion);
             }
         });
-        btnConfigurar.setOnClickListener(new View.OnClickListener() {
+        btnConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent navegacion = new Intent(Administrador.this, ConfUsuario.class);
+                Intent navegacion = new Intent(Administrador.this, ConfUsuarioA.class);
                 startActivity(navegacion);
             }
         });
-
-
-
-
-
-
+        btnNotificaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent navegacion = new Intent(Administrador.this, Notify.class);
+                startActivity(navegacion);
+            }
+        });
 
 
     }
