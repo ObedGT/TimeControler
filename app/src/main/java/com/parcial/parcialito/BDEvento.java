@@ -66,7 +66,13 @@ public class BDEvento extends AsyncTask<String, Void, List<EventoModelo>>{
                     do {
                         int id = rs.getInt("id_evento");
                         //Mira el estado de la asistencia
-                        boolean asistenciaEstado = true;
+                        boolean asistenciaEstado;
+                        if(tipo.equals("2")){
+                            asistenciaEstado=false;
+                        }
+                        else{
+                            asistenciaEstado=true;
+                        }
                         int id_asistencia = 0;
 
                         //Mira en la base de datos si ya ha aceptado el evento o no
@@ -78,6 +84,9 @@ public class BDEvento extends AsyncTask<String, Void, List<EventoModelo>>{
                                 if (tipo.equals("1")) {
                                     if (id_comparacion == id) {
                                         asistenciaEstado = false;
+                                    }
+                                    else {
+                                        asistenciaEstado = true;
                                     }
                                 }
                                 //si el tipo es = 2 y el usuario no ha aceptado el evento, no se agrega el evento

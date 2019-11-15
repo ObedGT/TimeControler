@@ -146,7 +146,7 @@ public class ConfUsuario extends AppCompatActivity {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
 
-            Toast.makeText(getApplicationContext(),"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Has realizado un cambio",Toast.LENGTH_SHORT).show();
         }catch (Exception e) {
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }

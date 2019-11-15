@@ -13,11 +13,11 @@ public class Conexion {
     private Connection conn = null;
 
     private String driver = "com.mysql.jdbc.Driver";
-    private String host = "192.168.43.133";
+    private String host = "sql10.freesqldatabase.com";
     private String port = "3306";
-    private String userName = "root";
-    private String password = "admon";
-    private String dbName = "timecontroler";
+    private String userName = "sql10311721";
+    private String password = "WKvwMQLJ1F";
+    private String dbName = "sql10311721";
 
     //Metodo que obtiene la conexion a la base de datos
     public Connection connect(){

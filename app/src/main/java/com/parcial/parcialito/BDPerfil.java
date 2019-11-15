@@ -65,7 +65,7 @@ public class BDPerfil extends AsyncTask<String, Void, List<PerfilModelo>> {
                         }
 
                         String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
-                        String carrera = rs.getString("ciclo") + " año de " + rs.getString("carrera");
+                        String carrera = rs.getString("ciclo") + " semestre de " + rs.getString("carrera");
                         int celular = rs.getInt("celular");
                         int chroma = rs.getInt("chroma");
                         int sexo = rs.getInt("sexo");
