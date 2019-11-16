@@ -1,9 +1,13 @@
 package com.parcial.parcialito;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.regex.Pattern;
@@ -32,8 +37,8 @@ public class registrar1 extends AppCompatActivity {
     private EditText txtCelular;
     private  EditText txtLogroH;
     private Button btnGuardar;
-    private Connection conn;
-    private Statement st = null;
+    private boolean existente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,30 +104,47 @@ public class registrar1 extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                if (txtCorreo.getText().toString().isEmpty() && txtContraseña.getText().toString().isEmpty() &&  txtNombre.getText().toString().isEmpty() &&  txtApellido.getText().toString().isEmpty() && txtCelular.getText().toString().isEmpty() && carr == 0 && gen == 0 && txtLogroH.getText().toString().isEmpty() ) {
-                    Toast.makeText(getApplicationContext(), "Todos los campos vacíos, por favor ingrese los datos requeridos", Toast.LENGTH_LONG).show();
+                if (txtCorreo.getText().toString().isEmpty() || txtContraseña.getText().toString().isEmpty() ||  txtNombre.getText().toString().isEmpty() ||  txtApellido.getText().toString().isEmpty() || txtCelular.getText().toString().isEmpty() || carr == 0 || gen == 0 || txtLogroH.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Por favor ingrese todos los datos requeridos", Toast.LENGTH_LONG).show();
                 }
-
-                else if (txtCorreo.getText().toString().isEmpty() || txtContraseña.getText().toString().isEmpty() ||  txtNombre.getText().toString().isEmpty() ||  txtApellido.getText().toString().isEmpty() || txtCelular.getText().toString().isEmpty() || carr == 0 || gen == 0 || txtLogroH.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Algún campo vacío, por favor ingrese todos los datos requeridos", Toast.LENGTH_LONG).show();
-                }
-
-
-
                 else {
                     if(isValidEmail(txtCorreo.getText().toString().trim())) {
-                        AgregarRegistro();
-                        txtCorreo.setText("");
-                        txtContraseña.setText("");
-                        txtNombre.setText("");
-                        txtApellido.setText("");
-                        txtCelular.setText("");
-                        txtLogroH.setText("");
+                        AgregarRegistro(2);
+                        if(!existente) {
+                            AlertDialog.Builder alerta = new AlertDialog.Builder(registrar1.this);
+                            final EditText hrs = new EditText(registrar1.this);
+                            hrs.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                            hrs.setHint("Ingresa el token ");
+                            hrs.setMaxLines(1);
+                            hrs.setInputType(InputType.TYPE_CLASS_NUMBER);
+                            alerta.setMessage("Se ha enviado un código a tu correo, ingresa el código para identificar que eres tú: \n")
+                                    .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                        @RequiresApi(api = Build.VERSION_CODES.O)
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            validarToken();
+                                            AgregarRegistro(1);
+                                            finish();
+                                            Intent intent = new Intent(registrar1.this, MainActivity.class);
+                                            startActivity(intent);
+
+                                        }
+                                    })
+                                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            alerta.setView(hrs);
+                            AlertDialog instanciarAlerta = alerta.create();
+                            instanciarAlerta.setTitle("Completa el registro");
+                            instanciarAlerta.show();
+                        }
                     }
 
-
                     else{ Toast.makeText(getApplicationContext(), "Correo electronico invalido, El correo son las iniciales de tu primer apellido y tu número de carné.", Toast.LENGTH_SHORT).show();
-                        txtCorreo.setError("Ingrese un correo válido eje. jonh123465@uvg.edu.gt");
+                        txtCorreo.setError("Ingrese un correo válido eje. jonh12345@uvg.edu.gt");
 
 
                     }
@@ -135,39 +157,109 @@ public class registrar1 extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void AgregarRegistro(){
+    private void validarToken() {
         Connection conn = null;
         PreparedStatement pst = null;
 
         String[] cadena = txtCorreo.getText().toString().split("@");
         String usuario=cadena[0];
-        String sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, logroH, fk_carrera, Celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 2, 1, " +  Integer.parseInt(txtLogroH.getText().toString() )+ ","+carr+",'"+txtCelular.getText().toString()+"', "+gen+")";
+        String sql="";
+    }
 
-        try {
-            Conexion conexion = new Conexion();
-            conn = conexion.connect();
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void AgregarRegistro(int tipo){
+        Connection conn = null;
+        PreparedStatement pst = null;
 
-            pst = conn.prepareStatement(sql);
-            pst.executeUpdate();
+        String[] cadena = txtCorreo.getText().toString().split("@");
+        String usuario=cadena[0];
+        String sql="";
 
-            Toast.makeText(getApplicationContext(),"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
-        }catch (Exception e) {
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        if (tipo == 1) {
+            sql="insert into usuario(pk_loginName, password, nombre, apellido, fk_rol, activo, logroH, fk_carrera, Celular, sexo) values('" + usuario + "', '" + txtContraseña.getText().toString()+ "', '" +txtNombre.getText().toString() + "', '" + txtApellido.getText().toString() + "', 2, 1, " +  Integer.parseInt(txtLogroH.getText().toString() )+ ","+carr+",'"+txtCelular.getText().toString()+"', "+gen+")";
+
+            try {
+                Conexion conexion = new Conexion();
+                conn = conexion.connect();
+
+                pst = conn.prepareStatement(sql);
+                pst.executeUpdate();
+
+                Toast.makeText(getApplicationContext(),"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
+            }catch (Exception e) {
+                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+            finally
+            {
+                try
+                {
+                    if (conn!=null) {
+                        conn.close();
+                    }
+                    if (pst!=null) {
+                        pst.close();
+                    }
+                } catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
+            }
         }
-        finally
-        {
-            try
-            {
-                if (conn!=null) {
-                    conn.close();
+        else if (tipo == 2) {
+            Statement st = null;
+            ResultSet rs = null;
+            sql = "select pk_loginName from usuario where pk_loginName='" + usuario + "'";
+            try {
+                Conexion conexion = new Conexion();
+                conn = conexion.connect();
+                st = conn.createStatement();
+
+                rs = st.executeQuery(sql);
+
+                if (rs.first()) {
+                    Toast.makeText(getApplicationContext(), "Usuario ya existente", Toast.LENGTH_SHORT).show();
+                    existente = true;
+                } else {
+                    existente = false;
+
+                    /*
+                    int Token=12345;
+
+
+                    Correo c=new Correo("obe1406@gmail.com", "obedjuega2.0","","",txtCorreo.toString().trim(),"Este es tu token","Hola");
+
+                    c.setPass("obedjuega2.0");
+                    c.setUsuarioCorreo("obe1406.2@gmail.com");
+                    c.setAsunto("Este es tu token");
+                    c.setMensaje("\n"+Token);
+                    c.setDestino(txtCorreo.toString().trim());
+
+
+                    EnviarCorreo ec = new EnviarCorreo();
+                    if(ec.enviarCorreo(c)){
+
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Error al enviar el token", Toast.LENGTH_SHORT).show();
+                    }
+                    */
                 }
-                if (pst!=null) {
-                    pst.close();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            } finally {
+                try {
+                    if (conn != null) {
+                        conn.close();
+                    }
+                    if (st != null) {
+                        st.close();
+                    }
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e)
-            {
-                e.printStackTrace();
             }
         }
     }

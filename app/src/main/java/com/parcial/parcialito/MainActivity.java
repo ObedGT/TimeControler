@@ -1,9 +1,14 @@
 package com.parcial.parcialito;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +68,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(navegacion3);
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botón al pulsar ir a atrás
+            AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+            alerta.setMessage("¿Desea Salir de la Aplicación?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            finishAffinity();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog titulo = alerta.create();
+            titulo.setTitle("Salir");
+            titulo.show();
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     //Método que sirve para guardar el Usuario en el dispositivo
